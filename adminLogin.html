@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script defer src=" https://use.fontawesome.com/releases/v5.0.10/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Boogaloo">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/cssFiles/style.css">
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign In</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/Admin/login" method="POST"> 
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="username" name="email" id="email">
+                            
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login" id="login" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    let user =$('#emailUser').val()
+$("#login").click(function(){
+    $.ajax({
+        url: "/Admin/login",
+        contentType:'application/json',
+        data:{
+        "email":"fatma@admin.com",
+        "password":"abc123"
+    },
+    success: function(result){
+        
+        
+    },error:function(error){
+        console.log("error");      
+    }
+    
+    });
+});
+</script>
+</body>
+
+</html>
