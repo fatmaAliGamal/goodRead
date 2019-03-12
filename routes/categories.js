@@ -26,30 +26,40 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);
+    console.log(id);
     Book.find({categoryId: id})
     .populate('categoryId')
     .populate('authorId')
     .exec(function (err, books) {
         if(!err) {
+            console.log(books[0]);
+            
             const allBooks = [];
             books.forEach(function (element) {
                 const book = {
-                    bookId: element._id,
-                    authorId: element.authorId[0]._id,
+                   bookId: element._id,
+                   authorId: element.authorId._id,
                   //  bookImg:element.image,
-                    bookName: element.name,
-                   // authName: element.authId[0].fname + element.authId[0].lname,
-                   categoryId: element.categoryId[0].name
+                    bookName: element.bookName,
+                    authName: element.authorId.authorName.first + element.authorId.authorName.last,
+                   categoryId: element.categoryId.categoryName
                 }
+            
                 allBooks.push(book);
             })
             const obj = {
-                catName : books[0].categoryId[0].name,
+                catName : books[0].categoryId.categoryName,
                 myBooks : allBooks
             }
+            console.log(obj);
             res.send(obj);
         }
-        else res.send(err);
+        else {
+            if (!res.headersSent) {
+                res.send(err);    
+            }
+            
+        }
     }); 
 });
 
