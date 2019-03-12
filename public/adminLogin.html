@@ -20,7 +20,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="email" class="form-control" placeholder="username" name="admin" id="email">
+                            <input type="email" class="form-control" placeholder="username" name="email" id="email">
                             
                         </div>
                         <div class="input-group form-group">
@@ -43,21 +43,21 @@
 <script>
     let user =$('#emailUser').val()
 $("#login").click(function(){
-  $.ajax({
-      url: "/test",
-      contentType:'application/json',
-      data:{
-	"email":"fatma@admin.com",
-	"password":"abc123"
-},
-success: function(result){
-    console.log("done");
+    $.ajax({
+        url: "/Admin/login",
+        contentType:'application/json',
+        data:{
+        "email":"fatma@admin.com",
+        "password":"abc123"
+    },
+    success: function(result){
+        
+        
+    },error:function(error){
+        console.log("error");      
+    }
     
-  },error:function(error){
-      console.log("error");      
-  }
-  
-});
+    });
 });
 </script>
 </body>
